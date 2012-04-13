@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{contact.name}}'s Resume</title>
+  <style type='text/css'>
+
+    /* Reset */
+    h2.heading {
+      margin: 0;
+    }
+    p {
+      margin: 0;
+    }
+    ul {
+      margin: 0;
+      list-style: none;
+    }
+    ul, li {
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    /* Web Style */
+    div#content {
+      margin: auto;
+      width: 800px;
+    }
+    h1, h2 {
+      font-weight: inherit;
+    }
+    div.section {
+      clear: both;
+      overflow: hidden;
+      border-bottom: 1px solid #CCCCCC;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    #contact h1 {
+      font-family: "Delicious SmallCaps", sans-serif;
+      font-size: 250%;
+    }
+    #contact h2 {
+      font-family: "Cambria", sans-serif;
+      font-size: 75%;
+      margin-left: 2px;
+    }
+    h2.heading {
+      float: left;
+      width: 200px;
+      font-style: italic;
+    }
+    div.right-column {
+      width:580px;
+      float: right;
+      text-align: left;
+    }
+    li.list1 {
+      float: left;
+      width: {{100 / skills|length}}%;
+      font-size: 120%;
+    }
+    li.list2 {
+      font-size: medium;
+      list-style-type: circle;
+      margin-left: 2em;
+      padding-right: 2em;
+    }
+    ul.list2 {
+      margin-top: 1em;
+    }
+    #references {
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+  <div id='contact' class="section">
+    <h1>{{contact.name}}</h1>
+    <p>{{contact.email}}</p>
+  </div>
+  
+  <div id='objective' class="section">
+    <h2 class="heading">Objective</h2>
+    <div class='right-column'>
+      <p>{{objective}}</p>
+    </div>
+  </div>
+  
+  <div id='work' class="section">
+    <h2 class="heading">Work Experience</h2>
+    <div class='right-column'>
+      <ul>
+        {% for job in work %}
+          <li>
+            {{job.start}} - {{job.stop}}: {{job.place}}
+            <ul>
+            {% for note in job.notes %}
+              <li>{{note}}</li>
+            {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <div id='education' class="section">
+    <h2 class="heading">Education</h2>
+    <div class='right-column'>
+      <p>{{education}}</p>
+    </div>
+  </div>
+  
+  <div id='skills' class="section">
+    <h2 class="heading">Skills</h2>
+    <div class='right-column'>
+      <ul class="list1">
+      {% for skill in skills %}
+        <li class="list1">{{skill.area}}
+          <ul class="list2">
+          {% for detail in skill.details %}
+            <li class="list2">{{detail}}</li>
+          {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <div id='languages' class="section">
+    <h2 class="heading">Languages</h2>
+    <div class='right-column'>
+      <ul class="list1">
+      {% for language in languages %}
+        <li class="list1">{{language.name}}
+          <ul class="list2">
+            <li class="list2">{{language.level}}</li>
+          {% for note in language.notes %}
+            <li class="list3">{{note}}</li>
+          {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <div id='references' class="section">
+    <h2 class="heading">References</h2>
+    <div class='right-column'>
+      <p>{{references}}</p>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

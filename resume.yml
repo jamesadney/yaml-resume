@@ -1,0 +1,30 @@
+contact:
+  name: Jane Doe
+  email: jane@doe.com
+objective:
+  Conquer the world
+work:
+  - place: Space
+    start: Fall 2005
+    stop: Spring 2005
+    notes:
+      - Went to Mars
+      - Won
+education:
+skills:
+  - area: Computers
+    details:
+      - Plan9
+  - area: Medicine
+    details:
+      - Cured cancer
+      - Brain transplant
+languages:
+  - name: English
+    level: Native
+  - name: Russian
+    level: Fluent
+    notes: 
+      - Translated to Python
+references: 
+  Available upon request

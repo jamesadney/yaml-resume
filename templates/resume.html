@@ -5,10 +5,7 @@
   <style type='text/css'>
 
     /* Reset */
-    h2.heading {
-      margin: 0;
-    }
-    p {
+    p, h1, h2 {
       margin: 0;
     }
     ul {
@@ -19,14 +16,15 @@
       margin-left: 0;
       padding-left: 0;
     }
+    h1, h2 {
+      font-weight: inherit;
+    }
 
     /* Web Style */
     div#content {
+      font-family: "Georgia", serif;
       margin: auto;
       width: 800px;
-    }
-    h1, h2 {
-      font-weight: inherit;
     }
     div.section {
       clear: both;
@@ -35,49 +33,84 @@
       padding-top: 20px;
       padding-bottom: 20px;
     }
+    #contact {
+      position: relative;   /*Lets "position: absolute" work as expected on children*/
+    }
     #contact h1 {
       font-family: "Delicious SmallCaps", sans-serif;
       font-size: 250%;
     }
-    #contact h2 {
-      font-family: "Cambria", sans-serif;
-      font-size: 75%;
-      margin-left: 2px;
+    #contact-left {
+      float:left;
+    }
+    #contact-right {
+      float: right;
+      text-align: right;
+      font-size: 90%;
+      position: absolute;
+      bottom: 20px;    /*Send to bottom of parent (above padding)*/
+      right: 0;
+    }
+    p#email {
+      font-style: italic;
     }
     h2.heading {
       float: left;
-      width: 200px;
+      width: 180px;
       font-style: italic;
     }
     div.right-column {
-      width:580px;
+      width:600px;
       float: right;
       text-align: left;
     }
-    li.list1 {
+    #work li.list1 {
+      float: left;
+    }
+    div.header-row {
+      position: relative;
+      overflow: hidden;
+    }
+    #work p.heading, #skills p.heading {
+      margin-bottom: 9px;
+      font-size: 120%;
+      float: left;
+    }
+    p.dates {
+      float: right;
+      position: absolute;
+      right: 0;
+      bottom: 9px;
+    }
+    #work li.list2, #skills li.list2 {
+      list-style-type: disc;
+      clear: left;
+      padding-bottom: .2em;
+    }
+    #work ul.list2, #skills ul.list2 {
+      margin-left: 1.7em;
+    }
+    #skills li.list1 {
       float: left;
       width: {{100 / skills|length}}%;
-      font-size: 120%;
-    }
-    li.list2 {
-      font-size: medium;
-      list-style-type: circle;
-      margin-left: 2em;
-      padding-right: 2em;
-    }
-    ul.list2 {
-      margin-top: 1em;
     }
     #references {
-      border: none;
+      border-bottom: none;
     }
   </style>
 </head>
 <body>
   <div id="content">
   <div id='contact' class="section">
-    <h1>{{contact.name}}</h1>
-    <p>{{contact.email}}</p>
+    <div id="contact-left">
+      <h1>{{contact.name}}</h1>
+      <p id="email">{{contact.email}}</p>
+    </div>
+    <div id="contact-right">
+      <p>{{contact.address}}</p>
+      <p>{{contact.city}}, {{contact.state}} {{contact.zip}}</p>
+      <p>{{contact.phone}}</p>
+    </div>
   </div>
   
   <div id='objective' class="section">
@@ -90,13 +123,16 @@
   <div id='work' class="section">
     <h2 class="heading">Work Experience</h2>
     <div class='right-column'>
-      <ul>
+      <ul class="list1">
         {% for job in work %}
-          <li>
-            {{job.start}} - {{job.stop}}: {{job.place}}
-            <ul>
+          <li class="list1">
+            <div class="header-row">
+              <p class="heading">{{job.place}}</p>
+              <p class="dates">{{job.start}} - {{job.stop}}</p>
+            </div>
+            <ul class="list2">
             {% for note in job.notes %}
-              <li>{{note}}</li>
+              <li class="list2">{{note}}</li>
             {% endfor %}
             </ul>
           </li>
@@ -117,7 +153,10 @@
     <div class='right-column'>
       <ul class="list1">
       {% for skill in skills %}
-        <li class="list1">{{skill.area}}
+        <li class="list1">
+          <div class="header-row">
+            <p class="heading">{{skill.area}}</p>
+          </div>
           <ul class="list2">
           {% for detail in skill.details %}
             <li class="list2">{{detail}}</li>

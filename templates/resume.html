@@ -37,7 +37,7 @@
       position: relative;   /*Lets "position: absolute" work as expected on children*/
     }
     #contact h1 {
-      font-family: "Delicious SmallCaps", sans-serif;
+      /*font-family: "Delicious SmallCaps", sans-serif;*/
       font-size: 250%;
     }
     #contact-left {
@@ -59,11 +59,11 @@
     }
     h2.heading {
       float: left;
-      width: 180px;
+      width: 170px;
       font-style: italic;
     }
     div.right-column {
-      width:600px;
+      width:620px;
       float: right;
       text-align: left;
     }
@@ -71,19 +71,37 @@
       position: relative;
       overflow: hidden;
     }
-    p.heading {
+    p.heading, p.heading-right {
       margin-bottom: 9px;
-      font-size: 120%;
+    }
+    p.heading {
       float: left;
+      font-size: 120%;
+    }
+    p.subheading {
+      float:left;
+      clear: left;
+      margin-bottom: 9px;
+      margin-left: 2em;
+      font-style: italic;
+      width: 50%;
+      font-size: 90%;
+    }
+    #work p.heading {
+      width: 60%;
+      margin-bottom: 0;
+    }
+    #education p.heading {
+      width: 75%;
     }
     p.heading-right {
       float: right;
       position: absolute;
       right: 0;
-      bottom: 9px;
+      bottom: 0;
       font-style: italic;
     }
-    li.list2 {
+    li.list2, li.list3 {
       list-style-type: disc;
       clear: left;
       padding-bottom: .2em;
@@ -96,7 +114,9 @@
       float: left;
       width: {{100 / skills|length}}%;
     }
-    div#work li.list1 + li.list1, div#education li.list1 + li.list1 {
+    div#work li.list1 + li.list1, 
+    div#education li.list1 + li.list1,
+    div#languages li.list1 + li.list1 {
       margin-top: 10px;
     }
     #references {
@@ -132,7 +152,8 @@
         {% for job in work %}
           <li class="list1">
             <div class="header-row">
-              <p class="heading">{{job.place}}</p>
+              <p class="heading">{{job.organization}}</p>
+              <p class="subheading">{{job.position}}</p>
               <p class="heading-right">{{job.start}} - {{job.stop}}</p>
             </div>
             <ul class="list2">
@@ -171,7 +192,10 @@
     <div class='right-column'>
       <ul class="list1">
       {% for language in languages %}
-        <li class="list1">{{language.name}}
+        <li class="list1">
+          <div class="header-row">
+            <p class="heading">{{language.name}}</p>
+          </div>
           <ul class="list2">
             <li class="list2">{{language.level}}</li>
           {% for note in language.notes %}
@@ -191,8 +215,8 @@
         {% for school in education %}
         <li class="list1">
           <div class="header-row">
-            <p class="heading">{{school.degree}} {{school.focus}}</p>
-            <p class="heading-right">{{school.schoolname}}</p>
+            <p class="heading">{{school.degree}} {{school.focus}}, {{school.schoolname}}</p>
+            <p class="heading-right">{{school.graduation}}</p>
           </div>
           <ul class="list2">
           {% for note in school.notes %}

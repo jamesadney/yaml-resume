@@ -110,13 +110,29 @@ ul.list2 {
   margin-left: 1.7em;
   padding-right: .5em;
 }
-#skills li.list1 {
+#skills ul {
+  border-bottom: 1px solid #CCCCCC;
+  overflow: hidden;
+}
+#skills li {
+  /*clear: left;
+  margin-left: 1.7em;
+  padding-right: .5em;*/
+  padding-bottom: .5em;
+  padding-top: .5em;
+  width: 50%;
+}
+#skills li.left {
   float: left;
-  width: {{100 / skills|length}}%;
+}
+#skills li.right {
+  float: right;
+}
+#skills ul :last {
+  border-bottom: 0;
 }
 div#work li.list1 + li.list1, 
-div#education li.list1 + li.list1,
-div#languages li.list1 + li.list1 {
+div#education li.list1 + li.list1{
   margin-top: 10px;
 }
 #references {

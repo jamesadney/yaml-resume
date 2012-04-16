@@ -51,40 +51,39 @@
   <div id='skills' class="section">
     <h2 class="heading">Skills</h2>
     <div class='right-column'>
-      <ul class="list1">
       {% for skill in skills %}
-        <li class="list1">
-          <div class="header-row">
-            <p class="heading">{{skill.area}}</p>
-          </div>
-          <ul class="list2">
-          {% for detail in skill.details %}
-            <li class="list2">{{detail}}</li>
-          {% endfor %}
-          </ul>
-        </li>
+      {{ loop.cycle("<ul>", "")}}
+      <li class={{ loop.cycle("'left'", "'right'") }}> {{ skill }} </li>
+      {{ loop.cycle("", "</ul>") }}
+      {% endfor %}
+    </div>
+  </div>
+  
+  <div id='technology' class="section">
+    <h2 class="heading">Technology</h2>
+    <div class='right-column'>
+      <ul>
+      {% for tech in technology %}
+        <li>{{tech}}</li>
       {% endfor %}
       </ul>
     </div>
   </div>
   
-  <div id='languages' class="section">
-    <h2 class="heading">Languages</h2>
+  <div id='spanish' class="section">
+    <h2 class="heading">Spanish</h2>
     <div class='right-column'>
       <ul class="list1">
-      {% for language in languages %}
         <li class="list1">
           <div class="header-row">
-            <p class="heading">{{language.name}}</p>
+            <p class="heading">{{spanish.level}}</p>
           </div>
           <ul class="list2">
-            <li class="list2">{{language.level}}</li>
-          {% for note in language.notes %}
-            <li class="list3">{{note}}</li>
+          {% for note in spanish.notes %}
+            <li class="list2">{{note}}</li>
           {% endfor %}
           </ul>
         </li>
-      {% endfor %}
       </ul>
     </div>
   </div>

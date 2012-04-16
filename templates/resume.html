@@ -54,6 +54,9 @@
     p#email {
       font-style: italic;
     }
+    #objective p {
+      font-size: 120%;
+    }
     h2.heading {
       float: left;
       width: 180px;
@@ -64,35 +67,37 @@
       float: right;
       text-align: left;
     }
-    #work li.list1 {
-      float: left;
-    }
     div.header-row {
       position: relative;
       overflow: hidden;
     }
-    #work p.heading, #skills p.heading {
+    p.heading {
       margin-bottom: 9px;
       font-size: 120%;
       float: left;
     }
-    p.dates {
+    p.heading-right {
       float: right;
       position: absolute;
       right: 0;
       bottom: 9px;
+      font-style: italic;
     }
-    #work li.list2, #skills li.list2 {
+    li.list2 {
       list-style-type: disc;
       clear: left;
       padding-bottom: .2em;
     }
-    #work ul.list2, #skills ul.list2 {
+    ul.list2 {
       margin-left: 1.7em;
+      padding-right: .5em;
     }
     #skills li.list1 {
       float: left;
       width: {{100 / skills|length}}%;
+    }
+    div#work li.list1 + li.list1, div#education li.list1 + li.list1 {
+      margin-top: 10px;
     }
     #references {
       border-bottom: none;
@@ -121,14 +126,14 @@
   </div>
   
   <div id='work' class="section">
-    <h2 class="heading">Work Experience</h2>
+    <h2 class="heading">Experience</h2>
     <div class='right-column'>
       <ul class="list1">
         {% for job in work %}
           <li class="list1">
             <div class="header-row">
               <p class="heading">{{job.place}}</p>
-              <p class="dates">{{job.start}} - {{job.stop}}</p>
+              <p class="heading-right">{{job.start}} - {{job.stop}}</p>
             </div>
             <ul class="list2">
             {% for note in job.notes %}
@@ -138,13 +143,6 @@
           </li>
         {% endfor %}
       </ul>
-    </div>
-  </div>
-  
-  <div id='education' class="section">
-    <h2 class="heading">Education</h2>
-    <div class='right-column'>
-      <p>{{education}}</p>
     </div>
   </div>
   
@@ -182,6 +180,27 @@
           </ul>
         </li>
       {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div id='education' class="section">
+    <h2 class="heading">Education</h2>
+    <div class='right-column'>
+      <ul>
+        {% for school in education %}
+        <li class="list1">
+          <div class="header-row">
+            <p class="heading">{{school.degree}} {{school.focus}}</p>
+            <p class="heading-right">{{school.schoolname}}</p>
+          </div>
+          <ul class="list2">
+          {% for note in school.notes %}
+            <li class="list2">{{note}}</li>
+          {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
       </ul>
     </div>
   </div>

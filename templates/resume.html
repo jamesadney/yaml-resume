@@ -24,7 +24,7 @@
     div#content {
       font-family: "Georgia", serif;
       margin: auto;
-      width: 800px;
+      width: 820px;
     }
     div.section {
       clear: both;
@@ -51,7 +51,7 @@
       bottom: 20px;    /*Send to bottom of parent (above padding)*/
       right: 0;
     }
-    p#email {
+    p#jobtitle {
       font-style: italic;
     }
     #objective p {
@@ -63,7 +63,7 @@
       font-style: italic;
     }
     div.right-column {
-      width:620px;
+      width:640px;
       float: right;
       text-align: left;
     }
@@ -129,12 +129,13 @@
   <div id='contact' class="section">
     <div id="contact-left">
       <h1>{{contact.name}}</h1>
-      <p id="email">{{contact.email}}</p>
+      <p id="jobtitle">{{contact.jobtitle}}</p>
     </div>
     <div id="contact-right">
       <p>{{contact.address}}</p>
       <p>{{contact.city}}, {{contact.state}} {{contact.zip}}</p>
       <p>{{contact.phone}}</p>
+      <p>{{contact.email}}</p>
     </div>
   </div>
   

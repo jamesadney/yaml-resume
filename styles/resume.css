@@ -110,23 +110,24 @@ ul.list2 {
   margin-left: 1.7em;
   padding-right: .5em;
 }
-#skills div.right-column {
+#skills div.right-column, #technology div.right-column {
   display: table;
   border-collapse: collapse;  /* Required to make borders on row work */
 }
 div.table-row {
   display: table-row;
   border-bottom: 1px solid #CCCCCC;
+  border-top: 1px solid transparent;
 }
 span.table-cell {
   display: table-cell;
   width: 50%;
-  padding-bottom: .5em;
-  padding-top: .5em;
+  padding-bottom: .7em;
+  padding-top: .7em;
   vertical-align: middle;
 }
 div.right-column > :last-child {
-  border-bottom: 0;
+  border-bottom: 1px solid transparent;
 }
 div#work li.list1 + li.list1, 
 div#education li.list1 + li.list1{

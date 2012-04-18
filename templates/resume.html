@@ -2,7 +2,151 @@
 <html>
 <head>
   <title>{{contact.name}}'s Resume</title>
-  <link rel="stylesheet" type="text/css" href="styles/resume.css"/>
+  <style>
+    /* Reset */
+    p, h1, h2 {
+      margin: 0;
+    }
+    ul {
+      margin: 0;
+      list-style: none;
+    }
+    ul, li {
+      margin-left: 0;
+      padding-left: 0;
+    }
+    h1, h2 {
+      font-weight: inherit;
+    }
+
+    /* Web Style */
+    div#content {
+      font-family: "Georgia", serif;
+      margin: auto;
+      width: 820px;
+    }
+    div.section {
+      clear: both;
+      overflow: hidden;
+      border-bottom: 1px solid #CCCCCC;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    #contact {
+      position: relative;   /*Lets "position: absolute" work as expected on children*/
+      padding-bottom: 10px;
+    }
+    #contact h1 {
+      /*font-family: "Delicious SmallCaps", sans-serif;*/
+      font-size: 250%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    #contact-left {
+      float:left;
+    }
+    #contact-right {
+      float: right;
+      text-align: right;
+      font-size: 90%;
+      position: absolute;
+      bottom: 10px;    /*Send to bottom of parent (above padding)*/
+      right: 0;
+    }
+    p#jobtitle {
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 2px;
+    }
+    #objective p {
+      font-size: 120%;
+    }
+    h2.heading {
+      float: left;
+      width: 170px;
+      font-style: italic;
+    }
+    div.right-column {
+      width:640px;
+      float: right;
+      text-align: left;
+    }
+    div.header-row {
+      position: relative;
+      overflow: hidden;
+    }
+    p.heading, p.heading-right {
+      margin-bottom: 9px;
+    }
+    p.heading {
+      float: left;
+      font-size: 120%;
+    }
+    p.subheading {
+      float:left;
+      clear: left;
+      margin-bottom: 9px;
+      margin-left: 2em;
+      font-style: italic;
+      width: 50%;
+      font-size: 90%;
+    }
+    #work p.heading {
+      width: 60%;
+      margin-bottom: 0;
+    }
+    #education p.heading {
+      width: 75%;
+    }
+    p.heading-right {
+      float: right;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-style: italic;
+    }
+    li.list2, li.list3 {
+      list-style-type: disc;
+      clear: left;
+      padding-bottom: .2em;
+    }
+    ul.list2 {
+      margin-left: 1.7em;
+      padding-right: .5em;
+    }
+    #skills div.right-column, #technology div.right-column {
+      display: table;
+      border-collapse: collapse;  /* Required to make borders on row work */
+    }
+    div.table-row {
+      display: table-row;
+      border-bottom: 1px solid #CCCCCC;
+      border-top: 1px solid transparent;
+    }
+    span.table-cell {
+      display: table-cell;
+      padding-bottom: .7em;
+      padding-top: .7em;
+      vertical-align: middle;
+    }
+    #skills span.table-cell {
+       width: {{100 / skills.columns}}%;
+    }
+    #technology span.table-cell {
+       width: {{100 / technology.columns}}%;
+    }
+    div.right-column > :last-child {
+      border-bottom: 1px solid transparent;
+    }
+    div#work li.list1 + li.list1, 
+    div#education li.list1 + li.list1{
+      margin-top: 10px;
+    }
+    #references {
+      border-bottom: none;
+    }
+  </style>
 </head>
 <body>
   <div id="content">
@@ -51,13 +195,14 @@
   <div id='skills' class="section">
     <h2 class="heading">Skills</h2>
     <div class='right-column'>
-      {% for skill in skills %}
+      {% for skill in skills.details %}
       {{ loop.cycle("<div class='table-row'>", "") }}
         <span class="table-cell">{{ skill }}</span>
       {% if loop.last %}  {# Ensure that there is a closing div tag #}
-      </div>
+        </div>
       {% else %}
-      {{ loop.cycle("", "</div>") }}
+        {% set loops = [""] * (skills["columns"] - 1) + ["</div>"] %}
+        {{ loop.cycle(*loops) }}
       {% endif %}
       {% endfor %}
     </div>
@@ -66,13 +211,14 @@
   <div id='technology' class="section">
     <h2 class="heading">Technology</h2>
     <div class='right-column'>
-      {% for tech in technology %}
-        {{ loop.cycle("<div class='table-row'>", "") }}
+      {% for tech in technology.details %}
+        {{ loop.cycle("<div class='table-row'>", "", "") }}
         <span class="table-cell">{{ tech }}</span>
         {% if loop.last %}  {# Ensure that there is a closing div tag #}
-        </div>
+          </div>
         {% else %}
-        {{ loop.cycle("", "</div>") }}
+          {% set loops = [""] * (technology["columns"] - 1) + ["</div>"] %}
+          {{ loop.cycle(*loops) }}
         {% endif %}
       {% endfor %}
     </div>

@@ -10,4 +10,7 @@ if __name__ == "__main__":
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('resume.html')
     
+    resume["technology"]["columns"] = 3
+    resume["skills"]["columns"] = 2
+    
     print template.render(resume)

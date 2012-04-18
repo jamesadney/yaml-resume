@@ -110,25 +110,22 @@ ul.list2 {
   margin-left: 1.7em;
   padding-right: .5em;
 }
-#skills ul {
-  border-bottom: 1px solid #CCCCCC;
-  overflow: hidden;
+#skills div.right-column {
+  display: table;
+  border-collapse: collapse;  /* Required to make borders on row work */
 }
-#skills li {
-  /*clear: left;
-  margin-left: 1.7em;
-  padding-right: .5em;*/
+div.table-row {
+  display: table-row;
+  border-bottom: 1px solid #CCCCCC;
+}
+span.table-cell {
+  display: table-cell;
+  width: 50%;
   padding-bottom: .5em;
   padding-top: .5em;
-  width: 50%;
+  vertical-align: middle;
 }
-#skills li.left {
-  float: left;
-}
-#skills li.right {
-  float: right;
-}
-#skills ul :last {
+div.right-column > :last-child {
   border-bottom: 0;
 }
 div#work li.list1 + li.list1, 

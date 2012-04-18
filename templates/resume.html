@@ -52,9 +52,9 @@
     <h2 class="heading">Skills</h2>
     <div class='right-column'>
       {% for skill in skills %}
-      {{ loop.cycle("<ul>", "")}}
-      <li class={{ loop.cycle("'left'", "'right'") }}> {{ skill }} </li>
-      {{ loop.cycle("", "</ul>") }}
+      {{ loop.cycle("<div class='table-row'>", "") }}
+        <span class="table-cell">{{ skill }}</span>
+      {{ loop.cycle("", "</div>") }}
       {% endfor %}
     </div>
   </div>

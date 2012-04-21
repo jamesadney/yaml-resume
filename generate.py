@@ -1,16 +1,25 @@
+import sys
+
 import yaml
 import jinja2
 
-if __name__ == "__main__":
+TECHNOLOGY_COLUMNS = 3
+SKILLS_COLUMNS = 2
 
-    with open("resume.yml") as f:
+def render_html(resume_file):
+    with open(resume_file) as f:
         resume = yaml.load(f)
         
-    from jinja2 import Environment, FileSystemLoader
-    env = Environment(loader=FileSystemLoader('templates'))
+    env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
     template = env.get_template('resume.html')
     
-    resume["technology"]["columns"] = 3
-    resume["skills"]["columns"] = 2
+    resume["technology"]["columns"] = TECHNOLOGY_COLUMNS
+    resume["skills"]["columns"] = SKILLS_COLUMNS
     
-    print template.render(resume)
+    return template.render(resume)
+
+
+if __name__ == "__main__":
+
+    resume_file = sys.argv[1]
+    print render_html(resume_file)

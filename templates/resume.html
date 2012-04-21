@@ -40,7 +40,10 @@
     #contact h1 {
       font-size: 250%;
       text-transform: uppercase;
+<<<<<<< .merge_file_MlKOkN
       /* letter-spacing: 3px; */
+=======
+>>>>>>> .merge_file_jAaRYL
     }
     #contact-left {
       float:left;
@@ -56,7 +59,10 @@
     p#jobtitle {
       font-style: italic;
       text-transform: uppercase;
+<<<<<<< .merge_file_MlKOkN
       /* letter-spacing: 2px; */
+=======
+>>>>>>> .merge_file_jAaRYL
       margin-top: 2px;
     }
     #objective p {
@@ -92,7 +98,12 @@
       width: 50%;
       font-size: 90%;
     }
+<<<<<<< .merge_file_MlKOkN
     #work p.heading, #volunteer p.heading {
+=======
+    #work p.heading,
+    #volunteer p.heading {
+>>>>>>> .merge_file_jAaRYL
       width: 60%;
       margin-bottom: 0;
     }
@@ -214,6 +225,24 @@
       {% endfor %}
     </div>
   </div>
+
+  <div id='spanish' class="section">
+    <h2 class="heading">Spanish</h2>
+    <div class='right-column'>
+      <ul class="list1">
+        <li class="list1">
+          <div class="header-row">
+            <p class="heading">{{spanish.level}}</p>
+          </div>
+          <ul class="list2">
+          {% for note in spanish.notes %}
+            <li class="list2">{{note}}</li>
+          {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
   
   <div id='spanish' class="section">
     <h2 class="heading">Spanish</h2>
@@ -253,10 +282,17 @@
     <h2 class="heading">Volunteer</h2>
     <div class='right-column'>
       <ul class="list1">
+<<<<<<< .merge_file_MlKOkN
         {% for job in volunteer %}
           <li class="list1">
             <div class="header-row">
               <p class="heading">{{job.organization}} - {{job.location}}</p>
+=======
+        {% for job in work %}
+          <li class="list1">
+            <div class="header-row">
+              <p class="heading">{{job.organization}}</p>
+>>>>>>> .merge_file_jAaRYL
               <p class="subheading">{{job.position}}</p>
               <p class="heading-right">{{job.start}} - {{job.stop}}</p>
             </div>

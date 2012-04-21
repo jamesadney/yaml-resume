@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='jsoneditor.css') }}"/>
+    <link rel="icon" href="logo-small.png"/>
+
+    <title>Resume Editor</title>
+
+    <style>
+        body {
+          padding: 0 70px;
+        }
+        #legend {
+          display: inline;
+          margin-left: 30px;
+        }
+        #legend h2 {
+           display: inline;
+           font-size: 18px;
+           margin-right: 20px;
+        }
+        #legend a {
+          color: white;
+          margin-right: 20px;
+        }
+        #legend span {
+          padding: 2px 4px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+          color: white;
+          font-weight: bold;
+          text-shadow: 1px 1px 1px black;
+          background-color: black;
+        }
+        #legend .string  { background-color: #009408; }
+        #legend .array   { background-color: #2D5B89; }
+        #legend .object  { background-color: #E17000; }
+        #legend .number  { background-color: #497B8D; }
+        #legend .boolean { background-color: #B1C639; }
+        #legend .null    { background-color: #B1C639; }
+
+        #expander {
+          cursor: pointer;
+          margin-right: 20px;
+        }
+
+        #controls {
+          width: 800px;
+          margin: auto;
+          margin-top: 40px;
+        } 
+        #controls span {
+          background: green;
+          border: 2px solid black;
+          padding: 1px;
+          width: 100px;
+          color: white;
+          text-align: center;
+          cursor: pointer;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+        }
+        #controls span:hover {
+          -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
+          -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
+        }
+        #controls span:active {
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="legend">
+        <span id="expander">Expand all</span>
+        <span class="array">array</span>
+        <span class="object">object</span>
+        <span class="string">string</span>
+        <span class="number">number</span>
+        <span class="boolean">boolean</span>
+        <span class="null">null</span>
+        <span>Remove item by deleting a property name.</span>
+    </div>
+
+    <div id="controls">
+      <span id="load_json">Load Resume</span>
+      <span id="save_json">Save Resume</span>
+      <span id="generate">Generate PDF</span>
+    </div>
+    <div id="editor" class="json-editor"></div>
+
+    <script src="{{ url_for('static', filename='json2.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery.jsoneditor.js') }}"></script>
+    <script src="{{ url_for('static', filename='jsoneditor.js') }}"></script>
+</body>
+</html>

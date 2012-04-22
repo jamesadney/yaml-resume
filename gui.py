@@ -1,11 +1,10 @@
 #!/usr/bin/python
 
-import tempfile
 import subprocess
-import os.path
-
+import shutil
 from gi.repository import Gtk
 import generator
+
 
 PDF_COMMAND = "wkhtmltopdf -s letter -B 1in -L 1in -R 1in -T .70in"
 
@@ -25,36 +24,24 @@ class ResumeMaker():
         self.pdf_btn = self.builder.get_object("pdf_button")
     
     def on_html_button_clicked(self, widget):
-        file_path = self.file_chooser_btn.get_filename()
-        html = self._generate_html(file_path)
+        yaml_file = self.file_chooser_btn.get_filename()
+        html_tempfile = generator.create_html_file(yaml_file)
+        
         response = self.save_dialog.run()
         self.save_dialog.hide()
-        
         if response == 1:
-            html_file = self.save_dialog.get_filename()
-            with open(html_file, 'w') as f:
-                f.write(html)
-            subprocess.call(['xdg-open', html_file])
+            dest_file = self.save_dialog.get_filename()
+            shutil.move(html_tempfile, dest_file)
     
     def on_pdf_button_clicked(self, widget):
-        file_path = self.file_chooser_btn.get_filename()
-        print self._generate_pdf(file_path)
-            
-    def _generate_html(self, yaml_file):
-        html = generator.render_html(yaml_file)
-        return html
-    
-    def _generate_pdf(self, yaml_file):
-        html = self._generate_html(yaml_file)
-        temp = tempfile.NamedTemporaryFile(suffix=".html")
-        temp.write(html)
-        html_file = temp.name
-        pdf_file = os.path.splitext(temp.name)[0] + ".pdf"
+        yaml_file = self.file_chooser_btn.get_filename()
+        pdf_tempfile = generator.create_pdf_file(yaml_file)
         
-        full_command = PDF_COMMAND.split() + [html_file, pdf_file]
-        subprocess.call(full_command)
-        
-        return pdf_file
+        response = self.save_dialog.run()
+        self.save_dialog.hide()
+        if response == 1:
+            dest_file = self.save_dialog.get_filename()
+            shutil.move(pdf_tempfile, dest_file)
 
 if __name__ == "__main__":
 

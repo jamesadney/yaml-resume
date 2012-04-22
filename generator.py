@@ -1,12 +1,14 @@
 import sys
 import tempfile
 import shutil, os.path
+import subprocess
 
 import yaml
 import jinja2
 
 TECHNOLOGY_COLUMNS = 3
 SKILLS_COLUMNS = 2
+PDF_COMMAND = "wkhtmltopdf -s letter -B 1in -L 1in -R 1in -T .70in"
 
 def render_html(yaml_file):
     with open(yaml_file) as f:
@@ -29,15 +31,21 @@ def create_html_file(yaml_file):
     
     return filename
 
+def create_pdf_file(yaml_file):
+    html_filename = create_html_file(yaml_file)
+    pdf_filename = os.path.splitext(html_filename)[0] + ".pdf"
+    
+    full_command = PDF_COMMAND.split() + [html_filename, pdf_filename]
+    subprocess.check_call(full_command)
+    
+    return pdf_filename
+
 
 if __name__ == "__main__":
 
     resume_file = sys.argv[1]
     
-    try:
-        html_file = create_html_file(resume_file)
-        destination = os.path.splitext(os.path.basename(resume_file))[0] + ".html"
-        shutil.move(html_file, destination)
-        print "Created {0} from {1}".format(destination, resume_file)
-    except:
-        print "Error creating html file"
+    pdf = create_pdf_file(resume_file)
+    destination = os.path.splitext(os.path.basename(resume_file))[0] + ".pdf"
+    shutil.move(pdf, destination)
+    print "Created {0} from {1}".format(destination, resume_file)

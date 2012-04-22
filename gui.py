@@ -30,11 +30,11 @@ class ResumeMaker():
         response = self.save_dialog.run()
         self.save_dialog.hide()
         
-        html_file = self.save_dialog.get_filename()
-        with open(html_file, 'w') as f:
-            f.write(html)
-        
-        subprocess.call(['xdg-open', html_file])
+        if response == 1:
+            html_file = self.save_dialog.get_filename()
+            with open(html_file, 'w') as f:
+                f.write(html)
+            subprocess.call(['xdg-open', html_file])
     
     def on_pdf_button_clicked(self, widget):
         file_path = self.file_chooser_btn.get_filename()

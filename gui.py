@@ -11,18 +11,14 @@ class ResumeMaker():
         
     def _initialize_widgets(self):
         self.main_window = self.builder.get_object("main_window")
-        self.file_entry = self.builder.get_object("file_entry")
-        self.open_button = self.builder.get_object("open_button")
-        self.html_button = self.builder.get_object("html_button")
-        self.pdf_button = self.builder.get_object("pdf_button")
+        self.file_chooser_btn = self.builder.get_object("filechooserbutton")
+        self.html_btn = self.builder.get_object("html_button")
+        self.pdf_btn = self.builder.get_object("pdf_button")
     
-    def on_open_btn_clicked(self, widget):
-        pass
+    def on_html_button_clicked(self, widget):
+        print self.file_chooser_btn.get_uri()
     
-    def on_html_btn_clicked(self, widget):
-        pass
-    
-    def on_pdf_btn_clicked(self, widget):
+    def on_pdf_button_clicked(self, widget):
         pass
 
 if __name__ == "__main__":

@@ -10,6 +10,7 @@ TECHNOLOGY_COLUMNS = 3
 SKILLS_COLUMNS = 2
 PDF_COMMAND = "wkhtmltopdf -s letter -B 1in -L 1in -R 1in -T .70in"
 
+
 def render_html(yaml_file):
     with open(yaml_file) as f:
         resume = yaml.load(f)
@@ -22,6 +23,7 @@ def render_html(yaml_file):
     
     return template.render(resume)
 
+
 def create_html_file(yaml_file):
     html = render_html(yaml_file)
     temp_name = tempfile.NamedTemporaryFile().name
@@ -30,6 +32,7 @@ def create_html_file(yaml_file):
         f.write(html)
     
     return filename
+
 
 def create_pdf_file(yaml_file):
     html_filename = create_html_file(yaml_file)

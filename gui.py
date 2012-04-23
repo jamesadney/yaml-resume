@@ -1,12 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import subprocess
 import shutil
 from gi.repository import Gtk
 import generator
 
-
-PDF_COMMAND = "wkhtmltopdf -s letter -B 1in -L 1in -R 1in -T .70in"
 
 class ResumeMaker():
 

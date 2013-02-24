@@ -18,8 +18,11 @@ def render_html(yaml_file):
     env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
     template = env.get_template('resume.html')
     
-    resume["technology"]["columns"] = TECHNOLOGY_COLUMNS
-    resume["skills"]["columns"] = SKILLS_COLUMNS
+    try:
+    	resume["technology"]["columns"] = TECHNOLOGY_COLUMNS
+    	resume["skills"]["columns"] = SKILLS_COLUMNS
+    except KeyError:
+	pass
     
     return template.render(resume)
 

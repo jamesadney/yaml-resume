@@ -28,14 +28,18 @@
     div.section {
       clear: both;
       overflow: hidden;
-      border-bottom: 1px solid #CCCCCC;
+     /* border-bottom: 1px solid #CCCCCC; */
+      border-top: 1px solid #CCCCCC;
       padding-top: 20px;
       padding-bottom: 20px;
+      page-break-inside: avoid;
     }
     #contact {
       position: relative;   /*Lets "position: absolute" work as expected on children*/
       padding-bottom: 10px;
       padding-top: 0;
+      
+      border-top: none;
     }
     #contact h1 {
       font-size: 250%;

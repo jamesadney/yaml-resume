@@ -22,24 +22,24 @@ class ResumeMaker():
         self.pdf_btn = self.builder.get_object("pdf_button")
 
     def on_html_button_clicked(self, widget):
-        yaml_file = self.file_chooser_btn.get_filename()
-        html_tempfile = generator.create_html_file(yaml_file)
-
-        response = self.save_dialog.run()
-        self.save_dialog.hide()
-        if response == 1:
-            dest_file = self.save_dialog.get_filename()
-            shutil.move(html_tempfile, dest_file)
+        self._generate_button_clicked(widget, generator.create_html_file)
 
     def on_pdf_button_clicked(self, widget):
-        yaml_file = self.file_chooser_btn.get_filename()
-        pdf_tempfile = generator.create_pdf_file(yaml_file)
+        self._generate_button_clicked(widget, generator.create_pdf_file)
+
+    def _generate_button_clicked(self, widget, generator_method):
+        try:
+            yaml_file = self.file_chooser_btn.get_filename()
+            tempfile = generator_method(yaml_file)
+        except TypeError:
+            print "Please choose a yaml file"
+            return False
 
         response = self.save_dialog.run()
         self.save_dialog.hide()
         if response == 1:
             dest_file = self.save_dialog.get_filename()
-            shutil.move(pdf_tempfile, dest_file)
+            shutil.move(tempfile, dest_file)
 
 if __name__ == "__main__":
 

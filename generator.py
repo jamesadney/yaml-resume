@@ -43,7 +43,10 @@ def create_pdf_file(yaml_file):
     pdf_filename = os.path.splitext(html_filename)[0] + ".pdf"
 
     full_command = PDF_COMMAND.split() + [html_filename, pdf_filename]
-    subprocess.check_call(full_command)
+    try:
+        subprocess.check_call(full_command)
+    except OSError:
+        sys.exit("`wkhtmltopdf` does not exist.")
 
     return pdf_filename
 

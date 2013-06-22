@@ -21,7 +21,7 @@ class Resume:
         self.window.set_size_request(200, 200)
 
         self.window.connect("delete_event", self.delete_event)
-        
+
         with open("private_resume.yml") as f:
             resume = yaml.load(f)
 
@@ -34,11 +34,11 @@ class Resume:
             #for child in range(3):
                 #self.treestore.append(piter, ['child %i of parent %i' %
                                               #(child, parent)])
-        
+
         self.grep(resume, None)
-        
+
     def grep(self, data, level):
-        
+
         if isinstance(data, dict):
             for key in data:
                 entry = self.treestore.append(level, [key])
@@ -49,7 +49,7 @@ class Resume:
                 self.grep(value, level)
         elif isinstance(data, str):
             entry = self.treestore.append(level, [data])
-        
+
         #for key in data:
             #entry = self.treestore.append(level, [key])
             #if isinstance(data[key], str):
@@ -59,8 +59,8 @@ class Resume:
                     #print value
                     #if isinstance(value, str):
                         #self.treestore.append(entry, [value])
-                
-            
+
+
 
         # create the TreeView using treestore
         self.treeview = Gtk.TreeView(self.treestore)

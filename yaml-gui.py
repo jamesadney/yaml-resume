@@ -5,6 +5,7 @@ import jinja2
 
 from gi.repository import Gtk
 
+
 class Resume:
 
     # close the window and quit
@@ -29,10 +30,10 @@ class Resume:
         self.treestore = Gtk.TreeStore(str)
 
         # we'll add some data now - 4 rows with 3 child rows each
-        #for parent in range(4):
-            #piter = self.treestore.append(None, ['parent %i' % parent])
-            #for child in range(3):
-                #self.treestore.append(piter, ['child %i of parent %i' %
+        # for parent in range(4):
+            # piter = self.treestore.append(None, ['parent %i' % parent])
+            # for child in range(3):
+                # self.treestore.append(piter, ['child %i of parent %i' %
                                               #(child, parent)])
 
         self.grep(resume, None)
@@ -50,17 +51,15 @@ class Resume:
         elif isinstance(data, str):
             entry = self.treestore.append(level, [data])
 
-        #for key in data:
-            #entry = self.treestore.append(level, [key])
-            #if isinstance(data[key], str):
-                #self.treestore.append(entry, [data[key]])
-            #else:
-                #for value in data[key]:
-                    #print value
-                    #if isinstance(value, str):
-                        #self.treestore.append(entry, [value])
-
-
+        # for key in data:
+            # entry = self.treestore.append(level, [key])
+            # if isinstance(data[key], str):
+                # self.treestore.append(entry, [data[key]])
+            # else:
+                # for value in data[key]:
+                    # print value
+                    # if isinstance(value, str):
+                        # self.treestore.append(entry, [value])
 
         # create the TreeView using treestore
         self.treeview = Gtk.TreeView(self.treestore)
@@ -93,6 +92,7 @@ class Resume:
         self.window.add(self.treeview)
 
         self.window.show_all()
+
 
 def main():
     Gtk.main()

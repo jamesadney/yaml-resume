@@ -1,6 +1,7 @@
 import sys
 import tempfile
-import shutil, os.path
+import shutil
+import os.path
 import subprocess
 
 import yaml

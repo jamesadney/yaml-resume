@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jane Doe's Resume</title>
+  <style>
+    /* Reset */
+    p, h1, h2 {
+      margin: 0;
+    }
+    ul {
+      margin: 0;
+      list-style: none;
+    }
+    ul, li {
+      margin-left: 0;
+      padding-left: 0;
+    }
+    h1, h2 {
+      font-weight: inherit;
+    }
+
+    /* Web Style */
+    div#content {
+      font-family: "Georgia", serif;
+      margin: auto;
+      width: 820px;
+    }
+    div.section {
+      clear: both;
+      overflow: hidden;
+     /* border-bottom: 1px solid #CCCCCC; */
+      border-top: 1px solid #CCCCCC;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      page-break-inside: avoid;
+    }
+    #contact {
+      position: relative;   /*Lets "position: absolute" work as expected on children*/
+      padding-bottom: 10px;
+      padding-top: 0;
+
+      border-top: none;
+    }
+    #contact h1 {
+      font-size: 250%;
+      text-transform: uppercase;
+    }
+    #contact-left {
+      float:left;
+    }
+    #contact-right {
+      float: right;
+      text-align: right;
+      font-size: 90%;
+      position: absolute;
+      bottom: 10px;    /*Send to bottom of parent (above padding)*/
+      right: 0;
+    }
+    p#jobtitle {
+      font-style: italic;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    #objective p {
+      font-size: 120%;
+    }
+    h2.heading {
+      float: left;
+      width: 170px;
+      font-style: italic;
+    }
+    div.right-column {
+      width:640px;
+      float: right;
+      text-align: left;
+    }
+    div.header-row {
+      position: relative;
+      overflow: hidden;
+    }
+    p.heading, p.heading-right {
+      margin-bottom: 9px;
+    }
+    p.heading {
+      float: left;
+      font-size: 120%;
+    }
+    p.subheading {
+      float:left;
+      clear: left;
+      margin-bottom: 9px;
+      margin-left: 2em;
+      font-style: italic;
+      width: 50%;
+      font-size: 90%;
+    }
+    #work p.heading,
+    #volunteer p.heading {
+      width: 60%;
+      margin-bottom: 0;
+    }
+    #education p.heading {
+      width: 75%;
+    }
+    p.heading-right {
+      float: right;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-style: italic;
+    }
+    li.list2, li.list3 {
+      list-style-type: disc;
+      clear: left;
+      padding-bottom: .2em;
+    }
+    ul.list2 {
+      margin-left: 1.7em;
+      padding-right: .5em;
+    }
+    #skills div.right-column, #technology div.right-column {
+      display: table;
+      border-collapse: collapse;  /* Required to make borders on row work */
+    }
+    div.table-row {
+      display: table-row;
+      border-bottom: 1px solid #CCCCCC;
+      border-top: 1px solid transparent;
+    }
+    span.table-cell {
+      display: table-cell;
+      padding-bottom: .3em;
+      padding-top: .3em;
+      vertical-align: middle;
+    }
+    #skills span.table-cell {
+       width: 50.0%;
+    }
+    #technology span.table-cell {
+       width: 33.3333333333%;
+    }
+    div.right-column > :first-child span {
+      padding-top: 0;
+    }
+    div.right-column > :last-child span {
+      padding-bottom: 0;
+    }
+    div.right-column > :last-child {
+      border-bottom: 1px solid transparent;
+    }
+    div#work li.list1 + li.list1,
+    div#education li.list1 + li.list1,
+    div#volunteer li.list1 + li.list1 {
+      margin-top: 10px;
+    }
+    #references {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+  <div id='contact' class="section">
+    <div id="contact-left">
+      <h1>Jane Doe</h1>
+      <p id="jobtitle">Astronaut</p>
+    </div>
+    <div id="contact-right">
+      <p>555 Beverly Hills Blvd.</p>
+      <p>Beverly Hills, CA 90210</p>
+      <p>555.555.5555</p>
+      <p>jane@example.com</p>
+    </div>
+  </div>
+
+  <div id='objective' class="section">
+    <h2 class="heading">Objective</h2>
+    <div class='right-column'>
+      <p>Reclaim Mars from invaders.</p>
+    </div>
+  </div>
+
+  <div id='work' class="section">
+    <h2 class="heading">Experience</h2>
+    <div class='right-column'>
+      <ul class="list1">
+        
+          <li class="list1">
+            <div class="header-row">
+              <p class="heading">European Space Agency - Space</p>
+              <p class="subheading">Captain</p>
+              <p class="heading-right">Fall 2056 - Spring 2093</p>
+            </div>
+            <ul class="list2">
+            
+              <li class="list2">Destroyed alien battleship</li>
+            
+              <li class="list2">Recovered from engine failure</li>
+            
+            </ul>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <div id='skills' class="section">
+    <h2 class="heading">Skills</h2>
+    <div class='right-column'>
+      
+      <div class='table-row'>
+        <span class="table-cell">SFSDC</span>
+      
+        
+        
+      
+      
+      
+        <span class="table-cell">KIC</span>
+        
+        </div>
+      
+      
+    </div>
+  </div>
+
+  <div id='spanish' class="section">
+    <h2 class="heading">Spanish</h2>
+    <div class='right-column'>
+      <ul class="list1">
+        <li class="list1">
+          <div class="header-row">
+            <p class="heading">Expert</p>
+          </div>
+          <ul class="list2">
+          
+            <li class="list2">234 years of experience</li>
+          
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id='technology' class="section">
+    <h2 class="heading">Technology</h2>
+    <div class='right-column'>
+      
+        <div class='table-row'>
+        <span class="table-cell">Linux 3.92</span>
+          
+          </div>
+        
+      
+    </div>
+  </div>
+
+  <div id='volunteer' class="section">
+    <h2 class="heading">Volunteer</h2>
+    <div class='right-column'>
+      <ul class="list1">
+        
+          <li class="list1">
+            <div class="header-row">
+              <p class="heading">Save the Mutants - Albany, New York, Mexican Empire</p>
+              <p class="subheading">Phone Marketer</p>
+              <p class="heading-right">Spring 2034 - Spring 2035</p>
+            </div>
+            <ul class="list2">
+            
+              <li class="list2">Helped change public opinion on mutants by diligently harassing people.</li>
+            
+            </ul>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <div id='education' class="section">
+    <h2 class="heading">Education</h2>
+    <div class='right-column'>
+      <ul>
+        
+        <li class="list1">
+          <div class="header-row">
+            <p class="heading">MEd Nuclear Fusion, University of Europa</p>
+            <p class="heading-right">August 2063</p>
+          </div>
+          <ul class="list2">
+          
+            <li class="list2">Thesis on Fusion-Powered Nanobots</li>
+          
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <div id='references' class="section">
+    <h2 class="heading">References</h2>
+    <div class='right-column'>
+      <p>Available upon request</p>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

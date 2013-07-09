@@ -18,6 +18,15 @@ work:
     notes:
       - Destroyed alien battleship
       - Recovered from engine failure
+  - organization: McDonald's
+    start: July 2012
+    stop: January 2014
+    position: Assistant to the Regional Manager
+    location: Detriot
+    notes:
+      - Record for the fastest cheeseburger made
+      - Employee of the year
+      - Helped lead an amazing team
 volunteer:
   - start: Spring 2034
     stop: Spring 2035
@@ -37,9 +46,15 @@ skills:
   details:
     - SFSDC
     - KIC
+    - Quantum Mechanics
+    - Technical Writing
+    - Fencing
+    - Juggling
 technology:
   details:
     - Linux 3.92
+    - Mac OS-XI
+    - Microsoft Word
 spanish:
   level: Expert
   notes: 
